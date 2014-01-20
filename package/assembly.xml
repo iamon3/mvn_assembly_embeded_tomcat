@@ -1,0 +1,48 @@
+<assembly>
+    <id>freedemowebappdistribution</id>
+    <baseDirectory>freedemowebappdistribution-1.0.0</baseDirectory>
+    <formats>
+        <format>dir</format>
+    </formats>
+
+    <fileSets>
+      <fileSet>
+        <outputDirectory>webserver/tomcat/lib</outputDirectory>
+           <includes>
+	     <include>demoapp-mvn-assembly-embeded-tomcat-1.0.0.jar</include>
+           </includes>
+        <directory>../core/tagret</directory>
+      </fileSet>
+    </fileSets>
+ 
+    <files>
+      <file>
+        <source/>
+        <outputDirectory/>
+        <destName/>
+        <filtered/>
+      </file>
+    </files>
+
+    <!-- Copy Tomcat image, excluding certain non-essential folders like docs, examples. -->
+    <dependencySets>
+        <dependencySet>
+            <includes>
+                <include>org.apache.tomcat:apache-tomcat:zip:{apacheTomcatVersion}</include>
+            </includes>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>apache-tomcat-${apacheTomcatVersion}/webapps/docs/</exclude>
+                    <exclude>apache-tomcat-${apacheTomcatVersion}/webapps/examples/</exclude>
+                    <exclude>apache-tomcat-${apacheTomcatVersion}/webapps/host-manager/</exclude>
+                    <exclude>apache-tomcat-${apacheTomcatVersion}/webapps/manager/</exclude>
+                    <exclude>apache-tomcat-${apacheTomcatVersion}/webapps/ROOT/</exclude>
+                    <exclude>apache-tomcat-${apacheTomcatVersion}/conf/server.xml</exclude>
+                </excludes>
+            </unpackOptions>
+            <outputDirectory>webserver</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>
